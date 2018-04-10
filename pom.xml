@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>elasticsearch-head</artifactId>
-    <version>5.0.0</version>
+    <version>5.0.1-SNAPSHOT</version>
     <name>elasticsearch-head</name>
     <description>WebJar for Mobz Elasticsearch Client</description>
     <url>http://webjars.org</url>
@@ -42,7 +42,7 @@
         <url>http://github.com/webjars/elasticsearch-head</url>
         <connection>scm:git:https://github.com/webjars/elasticsearch-head.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/elasticsearch-head.git</developerConnection>
-        <tag>elasticsearch-head-5.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
     
     <build>
