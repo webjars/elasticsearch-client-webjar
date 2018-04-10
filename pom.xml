@@ -10,16 +10,15 @@
 
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
-    <artifactId>elasticsearch-client</artifactId>
-    <version>5.0.0</version>
-    <name>Mobz Elasticsearch Client</name>
+    <artifactId>elasticsearch-head</artifactId>
+    <version>5.0.0-SNAPSHOT</version>
+    <name>elasticsearch-head</name>
     <description>WebJar for Mobz Elasticsearch Client</description>
     <url>http://webjars.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>5.0.0</upstream.version>
-        <upstream.url>https://github.com/mobz/elasticsearch-head/archive/v${upstream.version}.zip</upstream.url>
+        <upstream.url>https://github.com/mobz/elasticsearch-head/archive/v${version.unsnapshot}.zip</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
     </properties>
 
@@ -40,14 +39,28 @@
     </licenses>
 
     <scm>
-        <url>http://github.com/webjars/elasticsearch-client</url>
-        <connection>scm:git:https://github.com/webjars/elasticsearch-client.git</connection>
-        <developerConnection>scm:git:https://github.com/webjars/elasticsearch-client.git</developerConnection>
+        <url>http://github.com/webjars/elasticsearch-head</url>
+        <connection>scm:git:https://github.com/webjars/elasticsearch-head.git</connection>
+        <developerConnection>scm:git:https://github.com/webjars/elasticsearch-head.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
     
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.jamesward</groupId>
+                <artifactId>unsnapshot-maven-plugin</artifactId>
+                <version>0.2</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>unsnapshot</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -61,11 +74,11 @@
 								<echo message="download archive"/>
 								<get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip"/>
 								<echo message="unzip archive"/>
-								<unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}/${project.artifactId}-${upstream.version}">
+								<unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}/${project.artifactId}-${version.unsnapshot}">
 								</unzip>
 								<echo message="moving resources"/>
 								<move todir="${destDir}">
-									<fileset dir="${project.build.directory}/${project.artifactId}-${upstream.version}/elasticsearch-head-${upstream.version}/"/>
+									<fileset dir="${project.build.directory}/${project.artifactId}-${version.unsnapshot}/elasticsearch-head-${version.unsnapshot}/_site"/>
                                 </move>
                             </target>
                         </configuration>
