@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>elasticsearch-head</artifactId>
-    <version>5.0.0-SNAPSHOT</version>
+    <version>5.0.0</version>
     <name>elasticsearch-head</name>
     <description>WebJar for Mobz Elasticsearch Client</description>
     <url>http://webjars.org</url>
@@ -42,7 +42,7 @@
         <url>http://github.com/webjars/elasticsearch-head</url>
         <connection>scm:git:https://github.com/webjars/elasticsearch-head.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/elasticsearch-head.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>elasticsearch-head-5.0.0</tag>
     </scm>
     
     <build>
@@ -71,14 +71,14 @@
                         <goals><goal>run</goal></goals>
                         <configuration>
                             <target>
-								<echo message="download archive"/>
-								<get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip"/>
-								<echo message="unzip archive"/>
+								<echo message="download archive" />
+								<get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip" />
+								<echo message="unzip archive" />
 								<unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}/${project.artifactId}-${version.unsnapshot}">
 								</unzip>
-								<echo message="moving resources"/>
+								<echo message="moving resources" />
 								<move todir="${destDir}">
-									<fileset dir="${project.build.directory}/${project.artifactId}-${version.unsnapshot}/elasticsearch-head-${version.unsnapshot}/_site"/>
+									<fileset dir="${project.build.directory}/${project.artifactId}-${version.unsnapshot}/elasticsearch-head-${version.unsnapshot}/_site" />
                                 </move>
                             </target>
                         </configuration>
